@@ -1,9 +1,7 @@
-.. image:: https://travis-ci.org/jonathanhood/pypaths.svg?branch=master
-    :target: https://travis-ci.org/jonathanhood/pypaths
-    :align: right
+PyPaths |buildstatus|
+=====================
 
-PyPaths
-=======
+.. |buildstatus| image:: https://travis-ci.org/jonathanhood/pypaths.svg?branch=master
 
 PyPaths is a small library useful for computing paths across simple in-memory graphs. Try it out by installing with pip::
 
