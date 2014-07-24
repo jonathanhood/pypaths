@@ -2,7 +2,8 @@ PyPaths |buildstatus|
 =====================
 
 .. |buildstatus| image:: https://travis-ci.org/jonathanhood/pypaths.svg?branch=master
-
+    :target: https://travis-ci.org/jonathanhood/pypaths
+    
 PyPaths is a small library useful for computing paths across simple in-memory graphs. Try it out by installing with pip::
 
   > pip install pypaths
