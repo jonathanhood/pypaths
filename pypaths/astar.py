@@ -142,17 +142,18 @@ def pathfinder( neighbors=grid_neighbors( 100, 100 ),
             open_set.discard( current )
             closed_set.add( current )
             for neighbor in neighbors( current ):
-
                 tentative_score = g_score[ current ] + cost( current )
 
                 if neighbor in closed_set and ( neighbor in g_score and tentative_score >= g_score[ neighbor ] ):
                     continue
 
-                if neighbor not in closed_set or ( neighbor in g_score and tentative_score < g_score[ neighbor ] ):
+                if neighbor not in open_set or ( neighbor in g_score and tentative_score < g_score[ neighbor ] ):
                     came_from[ neighbor ] = current
                     g_score[ neighbor ] = tentative_score
                     f_score[ neighbor ] = tentative_score + distance( neighbor, end )
-                    open_set.add( neighbor )
+
+                    if neighbor not in open_set:
+                        open_set.add( neighbor )
 
         return None, []
     
