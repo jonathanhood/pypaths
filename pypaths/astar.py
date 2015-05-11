@@ -6,7 +6,7 @@ To use the pathfinder for the default case:
 
 >>> finder = pathfinder()
 >>> finder( (0,0), (1,1) )
-(2, [(0, 0), (1, 0), (1, 1)])
+(2, [(0, 0), (0, 1), (1, 1)])
 
 Or, to customize the pathfinder via passed in functions to handle for your
 particular graph implementation:
@@ -15,7 +15,7 @@ particular graph implementation:
 ...                      cost=fixed_cost(2),                \\
 ...                      neighbors=grid_neighbors(10,10) );
 >>> finder( (0,0), (2,2) )
-(8, [(0, 0), (1, 0), (2, 0), (2, 1), (2, 2)])
+(8, [(0, 0), (0, 1), (1, 1), (1, 2), (2, 2)])
 
 If a maximum cost is specified, then an empty path will be returned if
 the cost exceeded the specified maximum
@@ -46,9 +46,9 @@ def fixed_cost( cost ):
     """
     Return a fixed cost for all coordinates in the graph.
     >>> cost = fixed_cost( 20 )
-    >>> cost( (1, 2) )
+    >>> cost( 1, 2 )
     20
-    >>> cost( (3, 4) )
+    >>> cost( 3, 4 )
     20
     """
     def func( a, b ):

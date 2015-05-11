@@ -1,0 +1,8 @@
+README.rst
+setup.py
+pypaths/__init__.py
+pypaths/astar.py
+pypaths.egg-info/PKG-INFO
+pypaths.egg-info/SOURCES.txt
+pypaths.egg-info/dependency_links.txt
+pypaths.egg-info/top_level.txt
