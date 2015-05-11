@@ -51,7 +51,7 @@ def fixed_cost( cost ):
     >>> cost( (3, 4) )
     20
     """
-    def func( coord ):
+    def func( a, b ):
         return cost
     return func
 
@@ -99,7 +99,7 @@ def pathfinder( neighbors=grid_neighbors( 100, 100 ),
     distance - Callable that returns the estimated distance
                between two nodes.
     cost     - Callable that returns the cost to traverse
-               a given node.
+               between two given nodes.
     """
     
     def reconstruct_path( came_from, current_node ):
@@ -128,7 +128,7 @@ def pathfinder( neighbors=grid_neighbors( 100, 100 ),
         came_from = {}
 
         g_score = { start : 0 }
-        f_score = { start : cost( start ) }
+        f_score = { start : cost( start, end ) }
 
         while len( open_set ) != 0:
             current = min( open_set, key=lambda c: f_score[c] )
@@ -142,17 +142,18 @@ def pathfinder( neighbors=grid_neighbors( 100, 100 ),
             open_set.discard( current )
             closed_set.add( current )
             for neighbor in neighbors( current ):
-
-                tentative_score = g_score[ current ] + cost( current )
+                tentative_score = g_score[ current ] + cost( current, neighbor )
 
                 if neighbor in closed_set and ( neighbor in g_score and tentative_score >= g_score[ neighbor ] ):
                     continue
 
-                if neighbor not in closed_set or ( neighbor in g_score and tentative_score < g_score[ neighbor ] ):
+                if neighbor not in open_set or ( neighbor in g_score and tentative_score < g_score[ neighbor ] ):
                     came_from[ neighbor ] = current
                     g_score[ neighbor ] = tentative_score
                     f_score[ neighbor ] = tentative_score + distance( neighbor, end )
-                    open_set.add( neighbor )
+
+                    if neighbor not in open_set:
+                        open_set.add( neighbor )
 
         return None, []
     
