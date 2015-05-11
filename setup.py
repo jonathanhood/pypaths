@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pypaths',
-    version='0.1.1',
+    version='0.1.2',
     author='Jonathan Hood',
     author_email='me@jonathanhood.org',
     packages=['pypaths'],
